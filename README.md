@@ -3,6 +3,7 @@ To test the implementation, run `go test -v` inside of the `client_test` directo
 This is a project creating a secure file storage and file sharing system. It is IND-CPA secure, and ensures integrity and authenticity of file sharing actions. 
 
 - Data Structures
+
 * Struct User: the user struct should contain the username(string), the hash(password) (string), a unique salt value and a private key used for user authentication. A map invitation of files that they have been shared with, with the key being original owner of the file appended by the file name, and the value an uuid for the particular share. A similar shared_file map of files they shared (key file_name, value users that the file is shared with).(encrypt hashed )
 
 * Struct File: the file struct should contain the metadata of a file: a file’s owner(string), and its shared users(string[]), the number of times the file has been appended to num_append, and an array of symmetric keys sym_keys corresponding to each append.
@@ -11,7 +12,7 @@ This is a project creating a secure file storage and file sharing system. It is 
 
 * Map online_users: this set is to ensure proper sessions from the same users across multiple devices. 
 
-*Struct Invitation: this struct is used for file sharing. It should contain the name of the root_owner of a file and the name of the inviter owner and the name of the user invited and the filename and the symmetric key of the file shared //// hmac key///. Also, a boolean accepted indicating whether the invitation has been accepted or not. When the invitation is accepted, the invitee can access the metadata of the file owned by the root_user and use the symmetric key of the file to perform store/load/append. 
+* Struct Invitation: this struct is used for file sharing. It should contain the name of the root_owner of a file and the name of the inviter owner and the name of the user invited and the filename and the symmetric key of the file shared //// hmac key///. Also, a boolean accepted indicating whether the invitation has been accepted or not. When the invitation is accepted, the invitee can access the metadata of the file owned by the root_user and use the symmetric key of the file to perform store/load/append. 
 
 - User Authentication
 Relevant Client API Methods: InitUser, GetUser
